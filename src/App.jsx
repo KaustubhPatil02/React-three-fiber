@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas } from '@react-three/fiber'
+import "./style.css";
+import { OrbitControls, useTexture } from '@react-three/drei';
+import Image from './Image';
+import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Canvas camera={{ fov: 50 }}>
+      <OrbitControls />
+      <ambientLight />
+      <Image />
+      {/* <mesh>
+        <cylinderGeometry args={[2, 2, 2,30 ,30, true,]} />
+        <meshStandardMaterial map={tex} side={THREE.DoubleSide}/>
+
+      </mesh> */}
+
+
+      <EffectComposer>
+        <Bloom
+          mipmapBlur
+          intensity={8.0} // The bloom intensity.
+          luminanceThreshold={0} // luminance threshold. Raise this value to mask out darker elements in the scene.
+          luminanceSmoothing={0} // smoothness of the luminance threshold. Range is [0, 1]
+        // blurPass={undefined} // A blur pass.
+        // kernelSize={KernelSize.LARGE} // blur kernel size
+        // mipmapBlur={false} // Enables or disables mipmap blur.
+        // resolutionX={Resolution.AUTO_SIZE} // The horizontal resolution.
+        // resolutionY={Resolution.AUTO_SIZE} // The vertical resolution.
+        />
+        {/* <ToneMapping adaptive /> */}
+      </EffectComposer>
+
+
+
+    </Canvas>
+  );
 }
 
 export default App
