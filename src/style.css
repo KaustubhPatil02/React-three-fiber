@@ -6,6 +6,6 @@ body,
 }
 
 #root{
-    position: fixed;
+    /* position: fixed; */
     background-color: black;
 }

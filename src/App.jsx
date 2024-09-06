@@ -7,8 +7,9 @@ import { Bloom, EffectComposer, ToneMapping } from '@react-three/postprocessing'
 const App = () => {
 
   return (
-    <Canvas camera={{ fov: 50 }}>
-      <OrbitControls />
+    <>
+    <Canvas camera={{ fov: 60 }}>
+      {/* <OrbitControls /> */}
       <ambientLight />
       <Image />
       {/* <mesh>
@@ -36,6 +37,8 @@ const App = () => {
 
 
     </Canvas>
+    
+    </>
   );
 }
 
