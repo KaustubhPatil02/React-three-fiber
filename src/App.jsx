@@ -9,7 +9,7 @@ const App = () => {
   return (
     <>
     <Canvas camera={{ fov: 60 }}>
-      {/* <OrbitControls /> */}
+      <OrbitControls />
       <ambientLight />
       <Image />
       {/* <mesh>
@@ -22,7 +22,7 @@ const App = () => {
       <EffectComposer>
         <Bloom
           mipmapBlur
-          intensity={8.0} // The bloom intensity.
+          intensity={12.0} // The bloom intensity.
           luminanceThreshold={0} // luminance threshold. Raise this value to mask out darker elements in the scene.
           luminanceSmoothing={0} // smoothness of the luminance threshold. Range is [0, 1]
         // blurPass={undefined} // A blur pass.
